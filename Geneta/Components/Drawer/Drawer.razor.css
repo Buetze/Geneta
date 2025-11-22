@@ -1,0 +1,62 @@
+.drawer-container {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+}
+
+.drawer {
+    width: 3rem;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.drawer.open {
+    width: 250px;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.drawer-content {
+    height: calc(100% - 60px);
+    padding: 1rem;
+    overflow-y: auto;
+    margin-top: 2.6rem;
+}
+
+.drawer-content.open{
+    width: 250px;
+    margin-top: 0;
+}
+
+.drawer-toggle {
+    width: 100%;
+    height: 48px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.drawer-toggle:hover {
+    background-color: #f8f9fa;
+}

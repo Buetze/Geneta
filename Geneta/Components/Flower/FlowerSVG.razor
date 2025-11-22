@@ -1,0 +1,123 @@
+@using global::Geneta.Services
+@using global::Geneta.Simulation.Flower
+@inherits ComponentBase
+
+@if (Data != null)
+{
+    <svg width="@Dimensions.width" height="@Dimensions.height" viewBox="100 50 200 200">
+
+        <!-- DEFINITIONS (gradients etc.) -->
+        <defs>
+            <radialGradient id=@CenterGradientID>
+                <stop offset="0%" stop-color="@Lighten(Data.CenterColor, 0.4)" />
+                <stop offset="100%" stop-color="@Data.CenterColor" />
+            </radialGradient>
+
+            <linearGradient id=@PetalGradientID x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="@Lighten(Data.PetalColor, 0.5)" />
+                <stop offset="100%" stop-color="@Data.PetalColor" />
+            </linearGradient>
+            
+        </defs>
+        
+        <!-- Petals -->
+        @for (int i = 0; i < Data.PetalCount; i++)
+        {
+            var angle = (360.0 / Data.PetalCount) * i + RandomOffset(i);
+            <g transform="translate(200,150) rotate(@angle)">
+                <path d="@PetalPath"
+                      fill=@PetalGradientURL
+                      stroke="@Darken(Data.PetalColor, 0.5)"
+                      stroke-width="3"/>
+            </g>
+        }
+
+        <!-- Replace the existing center circles with this more detailed pattern -->
+        <!-- Flower center base -->
+        <circle cx="200" cy="150" r="32"
+                fill=@CenterGradientURL
+                stroke="@Darken(Data.CenterColor, 0.6)"
+                stroke-width="3" />
+
+        <!-- Detailed center pattern -->
+        @for (int i = 0; i < 12; i++)
+        {
+            var angle = (360.0 / 12) * i;
+            <g transform="translate(200,150) rotate(@angle)">
+                <!-- Small dots pattern -->
+                @for (int j = 0; j < 3; j++)
+                {
+                    var radius = 8 + (j * 8);
+                    <circle cx="@radius" cy="0" r="3"
+                            fill="@Darken(Data.CenterColor, 0.3)"
+                            opacity="0.8" />
+                }
+            </g>
+        }
+
+        <!-- Overlay pattern -->
+        @for (int i = 0; i < 8; i++)
+        {
+            var angle = (360.0 / 8) * i;
+            <g transform="translate(200,150) rotate(@angle)">
+                <path d="M -5 -5 Q 0 -15, 5 -5 Q 0 0, -5 -5"
+                      fill="@Lighten(Data.CenterColor, 0.2)"
+                      opacity="0.6" />
+            </g>
+        }
+
+        <!-- Center highlight -->
+        <circle cx="190" cy="140" r="8"
+                fill="@Lighten(Data.CenterColor, 0.9)"
+                opacity="0.4" />
+
+        <!-- Additional small highlights -->
+        <circle cx="210" cy="155" r="4"
+                fill="@Lighten(Data.CenterColor, 0.7)"
+                opacity="0.3" />
+        <circle cx="195" cy="160" r="3"
+                fill="@Lighten(Data.CenterColor, 0.8)"
+                opacity="0.25" />
+    </svg>
+}
+
+@code {
+    [Parameter] public FlowerPhenotype? Data { get; set; }
+    [Parameter] public int Identifier { get; set; }
+    [Parameter] public (int width, int height) Dimensions { get; set; } = (200, 200);
+    
+    [Inject] public ConfigurationService ConfigurationService { get; set; }
+
+    string CenterGradientID => "centerGradient" + Identifier;
+    string PetalGradientID => "petalGradient" + Identifier;
+
+    string CenterGradientURL => $"url(#{CenterGradientID})";
+    string PetalGradientURL => $"url(#{PetalGradientID})";
+
+    private string PetalPath =>
+        $"M 0 0 C {Data!.PetalWidth} {-Data.PetalLength/3}, " +
+        $"{Data.PetalWidth} {-2*Data.PetalLength/3}, 0 {-Data.PetalLength} " +
+        $"C {-Data.PetalWidth} {-2*Data.PetalLength/3}, " +
+        $"{-Data.PetalWidth} {-Data.PetalLength/3}, 0 0";
+
+    private int RandomOffset(int seed) =>
+        (seed * 17) % 7 - 3;
+
+    private string Lighten(string hex, double amt) => Adjust(hex, amt);
+    private string Darken(string hex, double amt) => Adjust(hex, -amt);
+
+    private string Adjust(string hex, double amount)
+    {
+        if (!hex.StartsWith("#")) return hex;
+
+        int r = Convert.ToInt32(hex.Substring(1, 2), 16);
+        int g = Convert.ToInt32(hex.Substring(3, 2), 16);
+        int b = Convert.ToInt32(hex.Substring(5, 2), 16);
+
+        r = (int)Math.Clamp(r + r * amount, 0, 255);
+        g = (int)Math.Clamp(g + g * amount, 0, 255);
+        b = (int)Math.Clamp(b + b * amount, 0, 255);
+
+        return $"#{r:X2}{g:X2}{b:X2}";
+    }
+}

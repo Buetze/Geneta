@@ -1,0 +1,53 @@
+@namespace Geneta.Components
+@using Radzen.Blazor
+@inherits ComponentBase
+
+<div class="drawer-container @(IsOpen ? "drawer-open" : "")">
+    <div class="drawer @(IsOpen ? "open" : "")">
+        <button class="drawer-toggle @(IsOpen ? "open" : "")"
+                @onclick="Toggle"
+                title="@(IsOpen ? "Close" : "Open")">
+            @if (IsOpen)
+            {
+                <RadzenIcon Icon="chevron_backward" style="font-weight: 200;"/> 
+            }
+            else
+            {
+                <RadzenIcon Icon="chevron_forward" style="font-weight: 200;"/>
+            }
+        </button>
+        
+        <div>
+            @if (IsOpen){
+                <div class="drawer-header">
+                    <h3>@Title</h3>
+                </div>
+            }
+        </div>
+        
+        <div class="drawer-content @(IsOpen ? "open" : "")">
+            @ChildContent
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "Settings";
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public bool IsOpen { get; set; }
+
+    private async Task Toggle()
+    {
+        IsOpen = !IsOpen;
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+    }
+}

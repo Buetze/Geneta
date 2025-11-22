@@ -1,0 +1,11 @@
+.trait-config-row {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.amount-selection{
+    height: 3.5rem;
+    width: 100%;
+}

@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+        <RootNamespace>Geneta</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.10"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.10" PrivateAssets="all"/>
+        <PackageReference Include="Radzen.Blazor" Version="8.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ServiceWorkerAssetsManifest Include="wwwroot/assets/**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Geneta.Simulation\Geneta.Simulation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\Assets\avalonia-logo.ico" />
+      <None Include="wwwroot\Assets\Flower_1_ColorBlue_FormDefault.svg" />
+      <None Include="wwwroot\Assets\Flower_1_ColorWhite_FormDefault.svg" />
+      <None Include="wwwroot\Assets\Flower_2_ColorBlue_FormAlternate.svg" />
+      <None Include="wwwroot\Assets\Flower_2_ColorBlue_FormDefault.svg" />
+      <None Include="wwwroot\Assets\Flower_2_ColorYellow_FormAlternate.svg" />
+      <None Include="wwwroot\Assets\Flower_2_ColorYellow_FormDefault.svg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Components\Drawer\Drawer.razor" />
+      <AdditionalFiles Include="Components\Flower\Flower.razor" />
+      <AdditionalFiles Include="Components\Flower\FlowerSVG.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Geneta\Flower\Flower.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Geneta\Flower\FlowerSVG.razor" />
+    </ItemGroup>
+
+</Project>
