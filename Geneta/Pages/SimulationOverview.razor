@@ -1,0 +1,109 @@
+@page "/"
+@using Radzen.Blazor
+
+@* Dialog *@
+<RadzenDialog />
+
+@* Drawer *@
+<Drawer Title="Actions" @ref="Drawer">
+    <div class="flower-content">
+
+        <div class="action-button-description" @onclick="OpenConfigrationModal">
+            <button class="drawer-button" >
+                <RadzenIcon Icon="reset_settings" style="font-weight: 200;"/>
+            </button>
+            @if (@Drawer.IsOpen)
+            {
+            <div>Start new Simulation</div>
+            }
+        </div>    
+        
+        <div class="action-button-description" @onclick="CreateNewGenerationFromGenes">
+            <button class="drawer-button" disabled="@(LeftOrganism == null || RightOrganism == null)">
+                <RadzenIcon Icon="allergy" style="font-weight: 200;"/>
+            </button>
+            @if (@Drawer.IsOpen)
+            {
+                <div>Generate new Generation</div>
+            }
+        </div>
+        
+        <hr/>
+        
+        <div>
+            @for (var i = 0; i < SimulationService.Simulation.Generations.Count; i++)
+            {
+                var index = i;
+                <button @onclick="() => SelectIndex(index)" class="drawer-button generation-index @(i == GenerationIndex ? "selected" : "")">@i</button>
+            }
+        </div>
+    </div>
+</Drawer>
+
+@if (SimulationService.Simulation.InitialGeneration != null)
+{
+    <div class="status-view">
+        
+        <div class="stay-for-grid"></div>
+
+        @* // **** Selection **** *@
+        <div class="status-view-field">
+            <div class="parent @(LeftOrganism == null ? "empty" : "")" @onclick="() => RemoveSelectedOrganism(LeftOrganism)">
+                @if (LeftOrganism != null)
+                {
+                    <Flower Data="LeftOrganism" Identifier="998"/>
+                }
+                else
+                {
+                    <span>Select First Parent</span>
+                }
+            </div>
+
+            <div class="parent @(RightOrganism == null ? "empty" : "")" @onclick="() => RemoveSelectedOrganism(RightOrganism)">
+                @if (RightOrganism != null)
+                {
+                    <Flower Data="RightOrganism" Identifier="999"/>
+                }
+                else
+                {
+                    <span>Select Second Parent</span>
+                }
+            </div>
+        </div>
+
+        @* // **** Parents **** *@
+        <div class="status-view-field">
+            <div class="parent @(CurrentGeneration.Parents.left == null ? "empty" : "")">
+                @if (CurrentGeneration.Parents.left != null)
+                {
+                    <Flower Data="CurrentGeneration.Parents.left" Identifier="997" ShowGenotypeButton="true"/>
+                }
+                else
+                {
+                    <span>Parent Left</span>
+                }
+            </div>
+
+            <div class="parent @(CurrentGeneration.Parents.right == null ? "empty" : "")">
+                @if (CurrentGeneration.Parents.right != null)
+                {
+                    <Flower Data="CurrentGeneration.Parents.right" Identifier="996" ShowGenotypeButton="true"/>
+                }
+                else
+                {
+                    <span>Parent Right</span>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="gene-grid">
+        @foreach (var (organism, index) in CurrentGeneration.Organism.Select((org, i) => (org, i)))
+        {
+            <div @onclick="() => SelectOrganism(organism)" class="flower @(organism == LeftOrganism || organism == RightOrganism  ? "selected" : "")">
+                <Flower Data="@organism" Identifier="@index" ShowGenotypeButton="true"></Flower>
+            </div>
+        }
+    </div>
+   
+}

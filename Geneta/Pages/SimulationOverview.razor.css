@@ -1,0 +1,82 @@
+.gene-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 1rem;
+    margin: 0 2rem;
+}
+
+.empty-slot {
+    color: #666;
+    padding: 2rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.gene-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-view-field{
+    display: flex;
+    justify-content: right;
+    gap: 0.5rem;
+    margin: 20px auto;
+}
+
+.status-view{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.parent {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parent.empty {
+    background-color: #f5f5f5;
+}
+
+.parent span {
+    color: #666;
+}
+
+.flower{
+    &.selected{
+        background-color: rgba(135, 206, 250, 0.3);
+        border-radius: 8px;
+    }
+}
+
+.generation-index{
+    &.selected{
+        background-color: rgba(135, 206, 250, 0.3);
+    }
+}
+
+.drawer-button{
+    width: 24px;
+    height: 48px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-button-description{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+}

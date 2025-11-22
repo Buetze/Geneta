@@ -1,0 +1,50 @@
+@using Geneta.Services
+@using Geneta.Simulation
+@using Radzen.Blazor
+@inherits ComponentBase
+
+@if (Data != null)
+{
+    <div class="flower-container position-relative">
+    @if (ShowGenotypeButton)
+    {
+        <button class="btn btn-sm btn-info position-absolute top-0 end-0" @onclick="ToggleGenotype" @onclick:preventDefault="true" @onclick:stopPropagation="true">
+            <RadzenIcon Icon="exclamation" Size="18"/>
+        </button>
+    
+        @if (showGenotype)
+        {
+            <div class="genotype-overlay">
+                <div class="genotype-content">
+                    <div class="genotype-list">
+                        @foreach (var gene in Data.Genotype)
+                        {
+                            <div class="gene-entry">
+                                <span class="gene-name">@gene.Key:</span>
+                                <span class="gene-value">@(gene.Value.GenoType.Item1.ToString() + gene.Value.GenoType.Item2.ToString())</span>
+                            </div>
+                        }
+                    </div>
+
+                    <button class="btn btn-sm btn-secondary" @onclick="ToggleGenotype" @onclick:preventDefault="true" @onclick:stopPropagation="true">Close</button>
+                </div>
+            </div>
+        }
+    }
+    <FlowerSVG Data="Data.Phenotype" Identifier="Identifier" Dimensions="(200, 200)"></FlowerSVG>
+    </div>
+}
+
+@code {
+    [Parameter] public IOrganism Data { get; set; }
+    [Parameter] public int Identifier { get; set; }
+    [Parameter] public bool ShowGenotypeButton { get; set; } = false;
+
+    [Inject] public ConfigurationService ConfigurationService { get; set; }
+    private bool showGenotype = false;
+
+    private void ToggleGenotype()
+    {
+        showGenotype = !showGenotype;
+    }
+}

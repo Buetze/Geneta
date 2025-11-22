@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Geneta.Simulation</RootNamespace>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+      <Reference Include="SkiaSharp">
+        <HintPath>..\..\..\..\..\..\home\pascal\.nuget\packages\skiasharp\2.88.6\lib\net6.0\SkiaSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

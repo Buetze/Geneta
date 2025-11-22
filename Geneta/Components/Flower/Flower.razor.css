@@ -1,0 +1,44 @@
+.flower-container {
+    position: relative;
+    display: inline-block;
+}
+
+.genotype-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-left: 1px solid #dee2e6;
+    z-index: 1000;
+}
+
+.genotype-content {
+    padding: 1rem;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.genotype-content pre {
+    font-size: 0.7rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+.genotype-list {
+    font-family: monospace;
+    font-size: 0.5rem;
+}
+
+.gene-entry {
+    margin-bottom: 0.25rem;
+}
+
+.gene-name {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.gene-value {
+    color: #2c5282;
+}
