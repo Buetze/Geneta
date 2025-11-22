@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "reKnUDO8",
+  "version": "ij6Au5Qc",
   "assets": [
     {
       "hash": "sha256-EPbkWNDDRzT7FnlfNgnSemJKY2T+7NX1NkIPE3Pc5fI=",
@@ -158,12 +158,12 @@ self.assetsManifest = {
       "url": "_content/Radzen.Blazor/fonts/SourceSans3VF-Upright.ttf.woff2"
     },
     {
-      "hash": "sha256-VhWUhnthxRZs3bG02NMdyXk6Gz5R72sZfl6arn2W+2U=",
-      "url": "_framework/Geneta.68fp8pb1bv.wasm"
+      "hash": "sha256-suewkT4djVHyRHACD41M6f3C8REZ2UDS2KwLXU7BuOE=",
+      "url": "_framework/Geneta.628mum1p57.wasm"
     },
     {
-      "hash": "sha256-2yuh0/9/Mnk7pJqP6tSvkfEsxeL0UATcN7nWERu2UVw=",
-      "url": "_framework/Geneta.Simulation.vvi9kobv3m.wasm"
+      "hash": "sha256-++I7gBteGk+34aMg4BSD2PGL0MwT8CKspfa1/0MzadA=",
+      "url": "_framework/Geneta.Simulation.t69a0gpsvf.wasm"
     },
     {
       "hash": "sha256-GebUZq4nv1QP9FwsZmrxL37w3mcBwTEZWxhs4dNkIHw=",
@@ -398,7 +398,7 @@ self.assetsManifest = {
       "url": "_framework/System.t4d4s3f398.wasm"
     },
     {
-      "hash": "sha256-GgFDM2cX9Rzog3ajLY5AKiF+XHp0D1C8KpH9YfHr1+Q=",
+      "hash": "sha256-qj+wg9uY6/Z0VNg7behW4/5XtmCKUEnmsYl4tdGIxBA=",
       "url": "_framework/blazor.boot.json"
     },
     {

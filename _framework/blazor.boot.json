@@ -1,10 +1,10 @@
 {
   "mainAssemblyName": "Geneta",
   "resources": {
-    "hash": "sha256-A5QE2m8H5k0YPHFl7/0oXKVMv1t8cU4hd6z6Sm8MYeo=",
+    "hash": "sha256-v/c/71GtMw3+42+xHamM3i+95B44cFyo9KfJUF3S8uk=",
     "fingerprinting": {
-      "Geneta.Simulation.vvi9kobv3m.wasm": "Geneta.Simulation.wasm",
-      "Geneta.68fp8pb1bv.wasm": "Geneta.wasm",
+      "Geneta.Simulation.t69a0gpsvf.wasm": "Geneta.Simulation.wasm",
+      "Geneta.628mum1p57.wasm": "Geneta.wasm",
       "Microsoft.AspNetCore.Components.Forms.16k4355tv2.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
       "Microsoft.AspNetCore.Components.q46h6ylqu3.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.gbompx95c3.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -90,8 +90,8 @@
       "System.Runtime.InteropServices.JavaScript.u9tzo6t7zm.wasm": "sha256-8v7jVijrzRlaTmvdds4+ZNyPL5DYfnYnzFYT2HtkqwM="
     },
     "assembly": {
-      "Geneta.Simulation.vvi9kobv3m.wasm": "sha256-2yuh0/9/Mnk7pJqP6tSvkfEsxeL0UATcN7nWERu2UVw=",
-      "Geneta.68fp8pb1bv.wasm": "sha256-VhWUhnthxRZs3bG02NMdyXk6Gz5R72sZfl6arn2W+2U=",
+      "Geneta.Simulation.t69a0gpsvf.wasm": "sha256-++I7gBteGk+34aMg4BSD2PGL0MwT8CKspfa1/0MzadA=",
+      "Geneta.628mum1p57.wasm": "sha256-suewkT4djVHyRHACD41M6f3C8REZ2UDS2KwLXU7BuOE=",
       "Microsoft.AspNetCore.Components.Forms.16k4355tv2.wasm": "sha256-GebUZq4nv1QP9FwsZmrxL37w3mcBwTEZWxhs4dNkIHw=",
       "Microsoft.AspNetCore.Components.q46h6ylqu3.wasm": "sha256-tmgnQHrqV7jeqjuQhDpBA18LZTs9dAe4KJfHWIX5T0Q=",
       "Microsoft.AspNetCore.Components.Web.gbompx95c3.wasm": "sha256-nNH20g2Twk9nsd0ISJl2ob3PAmX0C+tyTdrTxtZU6Dg=",
