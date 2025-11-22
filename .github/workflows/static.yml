@@ -34,7 +34,7 @@ jobs:
 
       - name: Change base-tag in index.html
         run: |
-          find release/wwwroot -name "index.html" -exec sed -i 's/<base href="\/"/<base href="\/your-repository-name\/"/g' {} +
+          find release/wwwroot -name "index.html" -exec sed -i 's/<base href="\/"/<base href="\/Geneta\/"/g' {} +
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
