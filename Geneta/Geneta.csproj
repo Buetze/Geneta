@@ -38,6 +38,8 @@
 
     <ItemGroup>
       <Folder Include="Components\" />
+      <Folder Include="wwwroot\Assets\" />
+      <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -49,6 +51,7 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Geneta\Flower\Flower.razor" />
       <_ContentIncludedByDefault Remove="Pages\Geneta\Flower\FlowerSVG.razor" />
+      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
     </ItemGroup>
 
 </Project>
