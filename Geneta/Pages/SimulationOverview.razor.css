@@ -80,3 +80,14 @@
     align-items: center;
     gap: 1rem;
 }
+
+.new-simulation-button{
+    
+}
+
+.new-simulation-view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

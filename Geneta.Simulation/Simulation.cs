@@ -7,7 +7,7 @@ public class Simulation
     private static Random _rnd = new();
     public List<Generation> Generations { get; set; } = new();
 
-    public Generation InitialGeneration => Generations.First();
+    public Generation? InitialGeneration => Generations?.FirstOrDefault();
 
     private Generation CreateNewGeneration(IOrganism organismOne, IOrganism organismTwo, Generation parentGeneration)
     {

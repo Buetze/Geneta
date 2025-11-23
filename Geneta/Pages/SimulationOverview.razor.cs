@@ -25,6 +25,11 @@ public partial class SimulationOverview : ComponentBase
     public SimulationOverview()
     {
     }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        SimulationService.OnNewSimulation += OnNewSimulation;
+    }
 
     private void SelectOrganism(IOrganism organism)
     {
@@ -94,6 +99,13 @@ public partial class SimulationOverview : ComponentBase
     private void SelectIndex(int generationIndex)
     {
         GenerationIndex = generationIndex;
+    }
+    
+    private void OnNewSimulation()
+    {
+        LeftOrganism  = null;
+        RightOrganism = null;
+        StateHasChanged();
     }
 
 }
